@@ -27,12 +27,6 @@ function agregarParticipacion(req, res) {
       .status(400)
       .send({ mensaje: "El carnet tiene que ser de 6 digitos" });
   }
-  const lengthTelefono = parametros.telefono.length;
-  if (lengthTelefono !== 8) {
-    return res.status(400).send({
-      mensaje: "El telefono tiene que ser como maximo y minimo de 8 digitos",
-    });
-  }
   const fechaNacimiento = new Date(parametros.fecha);
   const añosTotal = currentDate.getFullYear() - fechaNacimiento.getFullYear();
   if (añosTotal < 17) {
@@ -120,54 +114,54 @@ function agregarParticipacion(req, res) {
       .send({ mensaje: "Debe enviar los parametros obligatorios" });
   }
 }
-function calculaEntregaFines(diaPedido, diasPactados) {
-  let diaPropuesto = new Date(
-    diaPedido.getFullYear(),
-    diaPedido.getMonth(),
-    diaPedido.getDate()
+function calculaEntregaFines(diaInicio, diasTotal) {
+  let diaIniciado = new Date(
+    diaInicio.getFullYear(),
+    diaInicio.getMonth(),
+    diaInicio.getDate()
   );
 
   let i = 1;
 
-  while (diasPactados > 0) {
-    diaPropuesto = new Date(
-      diaPedido.getFullYear(),
-      diaPedido.getMonth(),
-      diaPedido.getDate() + i
+  while (diasTotal > 0) {
+    diaIniciado = new Date(
+      diaInicio.getFullYear(),
+      diaInicio.getMonth(),
+      diaInicio.getDate() + i
     );
 
-    if (diaPropuesto.getDay() > 0 && diaPropuesto.getDay() < 6) {
-      diasPactados--;
+    if (diaIniciado.getDay() > 0 && diaIniciado.getDay() < 6) {
+      diasTotal--;
     }
     i++;
   }
 
-  return diaPropuesto;
+  return diaIniciado;
 }
 
-function calculaEntregaFinMes(diaPedido, diasPactados) {
-  let diaPropuesto = new Date(
-    diaPedido.getFullYear(),
-    diaPedido.getMonth() + 1,
+function calculaEntregaFinMes(diaInicio, diasTotal) {
+  let diaIniciado = new Date(
+    diaInicio.getFullYear(),
+    diaInicio.getMonth() + 1,
     0
   );
 
   let i = 1;
 
-  while (diasPactados == 0) {
-    diaPropuesto = new Date(
-      diaPedido.getFullYear(),
-      diaPedido.getMonth() + 1,
+  while (diasTotal == 0) {
+    diaIniciado = new Date(
+      diaInicio.getFullYear(),
+      diaInicio.getMonth() + 1,
       0 - i
     );
 
-    if (diaPropuesto.getDay() > 0 && diaPropuesto.getDay() < 6) {
-      diasPactados--;
+    if (diaIniciado.getDay() > 0 && diaIniciado.getDay() < 6) {
+      diasTotal--;
     }
     i++;
   }
 
-  return diaPropuesto;
+  return diaIniciado;
 }
 
 function verRegistros(req, res) {}
