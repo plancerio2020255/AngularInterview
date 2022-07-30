@@ -1,0 +1,26 @@
+{
+  "name": "backendinterview",
+  "version": "1.0.0",
+  "description": "Parte logica de un evento de poesia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plancerio2020255/AngularInterview.git"
+  },
+  "author": "Pedro Alexander Lancerio Alvarado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plancerio2020255/AngularInterview/issues"
+  },
+  "homepage": "https://github.com/plancerio2020255/AngularInterview#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.0",
+    "nodemon": "^2.0.19"
+  }
+}
