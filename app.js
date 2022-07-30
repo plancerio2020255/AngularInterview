@@ -6,10 +6,10 @@ const app = express();
 const estudiantesRoutes = require("./src/routes/estudiantes.routes");
 
 //Cabeceras
+app.use(cors());
 //Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
 
 app.use("/api", estudiantesRoutes);
 

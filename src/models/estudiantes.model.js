@@ -8,9 +8,9 @@ const estudianteSchema = new Schema({
   genero: String,
   telefono: String,
   dateOfBirth: Date,
-  idCarrera: String,
+  carrera: String,
   //Genero de poesía
-  idGeneroP: String,
+  generoPoesia: String,
   fechaDeInscripcion: Date,
   fechaDelamacion: Date,
 });
